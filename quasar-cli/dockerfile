@@ -1,0 +1,22 @@
+FROM node:10.17-alpine
+#https://github.com/cypress-io/cypress-docker-images/blob/master/base/10.11.0/Dockerfile
+RUN apk add \ 
+    xauth \
+    xvfb \
+    # clean up
+    && rm -rf /var/lib/apt/lists/*
+
+ENV TERM xterm
+# avoid million NPM install messages
+ENV npm_config_loglevel warn
+# allow installing when the main user is root
+ENV npm_config_unsafe_perm true
+
+
+RUN npm install -g @quasar/cli
+
+#cypress does not run in an alpine image
+# #https://github.com/cypress-io/cypress/issues/3081
+# RUN npm install -g cypress@3.6.0 --unsafe-perm
+
+WORKDIR /workdir

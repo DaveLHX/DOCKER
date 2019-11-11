@@ -1,0 +1,5 @@
+FROM jfloff/alpine-python:latest
+RUN \ 
+    pip install mkdocs && \
+    rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/*
+WORKDIR /workdir

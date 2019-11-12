@@ -2,4 +2,4 @@ FROM cypress/included:3.6.0
 
 RUN npm install -g cypress-ntlm-auth
 ENTRYPOINT []
-CMD ntlm-proxy & cypress-ntlm run --browser electron
+CMD npm run cypress-ntlm
